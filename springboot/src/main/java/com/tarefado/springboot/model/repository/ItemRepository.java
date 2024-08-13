@@ -1,7 +1,10 @@
 package com.tarefado.springboot.model.repository;
 
-import com.tarefado.springboot.model.entity.ItemEntity;
+import com.tarefado.springboot.model.entity.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ItemRepository extends JpaRepository<ItemEntity, Integer> {
+
+@Repository
+public interface ItemRepository extends JpaRepository<Item, Long> {
 }

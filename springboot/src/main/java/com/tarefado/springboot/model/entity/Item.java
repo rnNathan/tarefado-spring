@@ -5,9 +5,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table
+@Table(name = "TB_ITEM")
 @Data
-public class ItemEntity {
+public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +15,7 @@ public class ItemEntity {
 
     @ManyToOne
     @JoinColumn(name = "tarefa_id")
-    private TarefaEntity idTarefa;
+    private Tarefa idTarefa;
 
     @Column(nullable = false)
     private String descricao;

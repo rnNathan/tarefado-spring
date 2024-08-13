@@ -1,9 +1,10 @@
 package com.tarefado.springboot.service;
 
-import com.tarefado.springboot.model.entity.UsuarioEntity;
+import com.tarefado.springboot.model.entity.Usuario;
 import com.tarefado.springboot.model.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -13,24 +14,24 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public UsuarioEntity inserir (UsuarioEntity usuarioEntity){
+    public Usuario inserir(Usuario usuarioEntity){
         return  usuarioRepository.save(usuarioEntity);
     }
 
-    public UsuarioEntity atualizar (UsuarioEntity atualizarUsuario){
+    public Usuario atualizar(@RequestBody Usuario atualizarUsuario){
         return usuarioRepository.save(atualizarUsuario);
     }
 
-    public List<UsuarioEntity> listarTodos() {
+    public List<Usuario> listarTodos() {
         return usuarioRepository.findAll();
     }
 
-    public UsuarioEntity buscarPorId(Integer id){
-        return usuarioRepository.findById(id.intValue()).get();
+    public Usuario buscarPorId(Integer id){
+        return usuarioRepository.findById(id.longValue()).get();
     }
 
-    public boolean excluir (Integer id) {
-        usuarioRepository.deleteById(id.intValue());
+    public boolean excluir(Integer id) {
+        usuarioRepository.deleteById(id.longValue());
         return true;
     }
 

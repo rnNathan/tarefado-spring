@@ -1,9 +1,7 @@
 package com.tarefado.springboot.controller;
 
-import com.tarefado.springboot.model.entity.ItemEntity;
-import com.tarefado.springboot.model.entity.TarefaEntity;
+import com.tarefado.springboot.model.entity.Item;
 import com.tarefado.springboot.service.ItemService;
-import com.tarefado.springboot.service.TarefaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,29 +15,29 @@ public class ItemController {
     private ItemService itemService;
 
     @PostMapping
-    public ItemEntity inserir (ItemEntity itemEntity) {
+    public Item inserir(@RequestBody Item itemEntity) {
         return itemService.inserir(itemEntity);
     }
 
     @PutMapping(path = "/atualizar")
-    public ItemEntity atualizar (@RequestBody ItemEntity itemEntity) {
+    public Item atualizar(@RequestBody Item itemEntity) {
         return itemService.atualizar(itemEntity);
     }
 
     @GetMapping
-    public List<ItemEntity> listarTodos() {
-        List<ItemEntity> itens = itemService.listarTodos();
+    public List<Item> listarTodos() {
+        List<Item> itens = itemService.listarTodos();
         return itens;
     }
 
     @GetMapping(path = "/{id}")
-    public ItemEntity buscarPorId (@PathVariable("id") Integer id) {
-        ItemEntity item = itemService.buscarPorId(id);
+    public Item buscarPorId(@PathVariable("id") Integer id) {
+        Item item = itemService.buscarPorId(id);
         return item;
     }
 
     @DeleteMapping(path = "/{id}")
-    public boolean excluir (Integer id){
+    public boolean excluir(Integer id){
         itemService.excluir(id);
         return true;
     }

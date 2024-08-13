@@ -1,8 +1,10 @@
 package com.tarefado.springboot.model.repository;
 
-import com.tarefado.springboot.model.entity.TarefaEntity;
+import com.tarefado.springboot.model.entity.Tarefa;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface TarefaRepository extends JpaRepository <TarefaEntity, Integer> {
+@Repository
+public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
 
 }

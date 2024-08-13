@@ -6,7 +6,7 @@ import lombok.Data;
 @Entity
 @Table(name = "TB_TAREFA")
 @Data
-public class TarefaEntity {
+public class Tarefa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +15,7 @@ public class TarefaEntity {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
-    private UsuarioEntity idUsuario;
+    private Usuario idUsuario;
 
     @Column(nullable = false)
     private String nomeTarefa;

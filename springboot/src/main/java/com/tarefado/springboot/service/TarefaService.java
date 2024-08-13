@@ -1,12 +1,9 @@
 package com.tarefado.springboot.service;
 
-import com.tarefado.springboot.model.entity.TarefaEntity;
+import com.tarefado.springboot.model.entity.Tarefa;
 import com.tarefado.springboot.model.repository.TarefaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -17,24 +14,24 @@ public class TarefaService {
     @Autowired
     private TarefaRepository tarefaRepository;
 
-    public TarefaEntity inserir (@RequestBody TarefaEntity tarefaEntity) {
+    public Tarefa inserir(Tarefa tarefaEntity) {
         return tarefaRepository.save(tarefaEntity);
     }
 
-    public TarefaEntity atualizar (TarefaEntity atualiazarTarefa) {
+    public Tarefa atualizar(@RequestBody Tarefa atualiazarTarefa) {
         return tarefaRepository.save(atualiazarTarefa);
     }
 
-    public TarefaEntity buscarPorId(Integer id){
-        return tarefaRepository.findById(id.intValue()).get();
+    public Tarefa buscarPorId(Integer id){
+        return tarefaRepository.findById(id.longValue()).get();
     }
 
-    public List<TarefaEntity> listarTodos () {
+    public List<Tarefa> listarTodos() {
         return tarefaRepository.findAll();
     }
 
-    public boolean excluir (Integer id ){
-        tarefaRepository.deleteById(id.intValue());
+    public boolean excluir(Integer id ){
+        tarefaRepository.deleteById(id.longValue());
         return true;
     }
 
