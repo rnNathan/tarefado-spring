@@ -18,7 +18,7 @@ public class UsuarioService {
         return  usuarioRepository.save(usuarioEntity);
     }
 
-    public Usuario atualizar(@RequestBody Usuario atualizarUsuario){
+    public Usuario atualizar(Usuario atualizarUsuario){
         return usuarioRepository.save(atualizarUsuario);
     }
 

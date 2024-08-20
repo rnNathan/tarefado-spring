@@ -18,7 +18,7 @@ public class ItemService {
         return itemRepository.save(itemEntity);
     }
 
-    public Item atualizar(@RequestBody Item atualizarItem) {
+    public Item atualizar(Item atualizarItem) {
         return itemRepository.save(atualizarItem);
     }
 

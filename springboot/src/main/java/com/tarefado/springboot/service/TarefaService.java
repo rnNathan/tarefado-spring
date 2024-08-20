@@ -18,7 +18,7 @@ public class TarefaService {
         return tarefaRepository.save(tarefaEntity);
     }
 
-    public Tarefa atualizar(@RequestBody Tarefa atualiazarTarefa) {
+    public Tarefa atualizar(Tarefa atualiazarTarefa) {
         return tarefaRepository.save(atualiazarTarefa);
     }
 

@@ -3,6 +3,8 @@ package com.tarefado.springboot.model.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table(name = "TB_TAREFA")
 @Data
@@ -12,10 +14,12 @@ public class Tarefa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario idUsuario;
+
+    @OneToMany(mappedBy = "idTarefa")
+    private List<Item> item;
 
     @Column(nullable = false)
     private String nomeTarefa;
@@ -23,7 +27,6 @@ public class Tarefa {
     @Column(nullable = false)
     private String tipoTarefa;
 
-    //private Integer<ItemTarefa> itensTarefa;
     private Boolean realizado;
     private Boolean isTemplate;
 }
