@@ -1,6 +1,8 @@
 package com.tarefado.springboot.controller;
 
 
+import com.tarefado.springboot.exception.TarefaException;
+import com.tarefado.springboot.model.dto.TemplateDTO;
 import com.tarefado.springboot.model.entity.Tarefa;
 import com.tarefado.springboot.service.TarefaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,11 @@ public class TarefaController {
     @PostMapping
     public Tarefa inserir(@RequestBody Tarefa tarefaEntity) {
         return tarefaService.inserir(tarefaEntity);
+    }
+
+    @PostMapping(path = "/template")
+    public Tarefa criarTarefaTemplate(TemplateDTO templateDTO) throws TarefaException {
+        return tarefaService.criarTarefaTemplate(templateDTO);
     }
 
     @PutMapping(path = "/atualizar")
@@ -42,5 +49,7 @@ public class TarefaController {
         tarefaService.excluir(id);
         return true;
     }
+
+
 
 }
