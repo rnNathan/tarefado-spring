@@ -3,9 +3,12 @@ package com.tarefado.springboot.controller;
 
 import com.tarefado.springboot.exception.TarefaException;
 import com.tarefado.springboot.model.dto.TemplateDTO;
+import com.tarefado.springboot.model.entity.Item;
 import com.tarefado.springboot.model.entity.Tarefa;
 import com.tarefado.springboot.service.TarefaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,18 +21,18 @@ public class TarefaController {
     private TarefaService tarefaService;
 
     @PostMapping
-    public Tarefa inserir(@RequestBody Tarefa tarefaEntity) {
-        return tarefaService.inserir(tarefaEntity);
+    public ResponseEntity<Tarefa> inserir(@RequestBody Tarefa novaTarefa) throws TarefaException {
+        return ResponseEntity.ok(tarefaService.inserir(novaTarefa));
     }
 
     @PostMapping(path = "/template")
-    public Tarefa criarTarefaTemplate(TemplateDTO templateDTO) throws TarefaException {
-        return tarefaService.criarTarefaTemplate(templateDTO);
+    public ResponseEntity<Tarefa> criarTarefaTemplate(@RequestBody TemplateDTO templateDTO) throws TarefaException {
+        return ResponseEntity.ok(tarefaService.criarTarefaTemplate(templateDTO));
     }
 
     @PutMapping(path = "/atualizar")
-    public Tarefa atualizar(@RequestBody Tarefa tarefaEntity) {
-        return tarefaService.atualizar(tarefaEntity);
+    public ResponseEntity<Tarefa> atualizar(@RequestBody Tarefa atualizar) {
+        return ResponseEntity.ok(tarefaService.atualizar(atualizar));
     }
 
     @GetMapping

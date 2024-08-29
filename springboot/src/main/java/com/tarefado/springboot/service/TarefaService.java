@@ -21,8 +21,9 @@ public class TarefaService {
     @Autowired
     private ItemRepository itemRepository;
 
-    public Tarefa inserir(Tarefa tarefaEntity) {
-        return tarefaRepository.save(tarefaEntity);
+    public Tarefa inserir(Tarefa novaTarefa) throws TarefaException {
+        this.validarCamposObrigatorios(novaTarefa);
+        return tarefaRepository.save(novaTarefa);
     }
 
     public Tarefa atualizar(Tarefa atualiazarTarefa) {
@@ -68,6 +69,21 @@ public class TarefaService {
         novaTarefa = tarefaRepository.findById(novaTarefa.getId().longValue()).orElse(null);
 
         return novaTarefa;
+    }
+
+    private void validarCamposObrigatorios(Tarefa t) throws TarefaException {
+
+        String mensagemValidacao = "";
+        if (t.getNomeTarefa() == null || t.getNomeTarefa().isEmpty()) {
+            mensagemValidacao += " - informe o nome \n";
+        }
+        if (t.getTipoTarefa() == null || t.getTipoTarefa().isEmpty()) {
+            mensagemValidacao += " - informe o tipo da tarefa \n";
+        }
+        if (!mensagemValidacao.isEmpty()) {
+
+            throw new TarefaException("Preencha o(s) seguinte(s) campo(s) \n " + mensagemValidacao);
+        }
     }
 
 }

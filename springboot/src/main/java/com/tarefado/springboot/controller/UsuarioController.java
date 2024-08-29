@@ -3,6 +3,7 @@ package com.tarefado.springboot.controller;
 import com.tarefado.springboot.model.entity.Usuario;
 import com.tarefado.springboot.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,13 +17,13 @@ public class UsuarioController {
 
 
     @PostMapping
-    public Usuario inserir(@RequestBody Usuario inserir) {
-        return usuarioService.inserir(inserir);
+    public ResponseEntity<Usuario> inserir(@RequestBody Usuario inserir) {
+        return ResponseEntity.ok(usuarioService.inserir(inserir));
     }
 
     @PutMapping
-    public Usuario atualizar(@RequestBody Usuario atualizarUsuario) {
-        return usuarioService.atualizar(atualizarUsuario);
+    public ResponseEntity<Usuario> atualizar(@RequestBody Usuario atualizarUsuario) {
+        return ResponseEntity.ok(usuarioService.atualizar(atualizarUsuario))    ;
     }
 
     @GetMapping
@@ -32,9 +33,8 @@ public class UsuarioController {
     }
 
     @GetMapping(path = "/{id}")
-    public Usuario buscarPorId(@PathVariable ("id") Integer id) {
-        Usuario usuario = usuarioService.buscarPorId(id);
-        return usuario;
+    public ResponseEntity<Usuario> buscarPorId(@PathVariable Integer id) {
+        return ResponseEntity.ok(usuarioService.buscarPorId(id));
     }
 
     @DeleteMapping(path = "/{id}")
